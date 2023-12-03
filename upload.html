@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 업로드</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="font-size: 12px;">
+    <h1>소환</h1>
+    <h2>자유롭게 하고싶은 말을 남겨주세요!</h2>
+    <main>
+        <form id="dataForm" class="dataform">
+            <label for="name">NAME:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="message">메세지:</label>
+            <input type="text" id="message" name="message" required><br>
+    
+            <button type="submit">남기기</button>
+        </form>
+
+    </main>
+
+    <script type="module">
+      import { uploadData } from './upload.js';
+
+      const dataForm = document.getElementById('dataForm');
+
+      dataForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const message = document.getElementById('message').value;
+
+        const result = await uploadData(name, message);
+
+        if (result) {
+          alert('데이터가 업로드되었습니다.');
+          // 폼 초기화
+          dataForm.reset();
+        }
+      });
+    </script>
+</body>
+</html>

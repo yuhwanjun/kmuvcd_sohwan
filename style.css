@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Happiness-Sans-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+html, body {
+    font-family: 'Happiness-Sans-Title';
+    background-color: #2f93ca;
+    color: #ffeda2;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+form {
+    font-size: 1.5rem;
+}
+
+h1 {
+    position: absolute;
+    font-size: 2.6rem;
+    top: 1.4em;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    filter: drop-shadow(0px 0px 6px #2f93ca);
+    z-index: 5;
+}
+
+h2 {
+    position: absolute;
+    font-size: 1.4rem;
+    top: 5.6em;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-50%);
+    color: #ffffff;
+    filter: drop-shadow(0px 0px 4px #2f93ca);
+    z-index: 5;
+
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 120vh;
+    transform: translate(-50%, -50%);
+    background-image: url("./SVG/star.svg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: #2f93ca;
+    filter: drop-shadow(0px 0px 24px #fff);
+}
+
+button {
+    font-family: 'Happiness-Sans-Title';
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ffeda2;
+    filter: drop-shadow(0px 0px 4px #ffeda2);
+    background-color: #2f93ca;
+    border: none;
+    font-size: 1.6rem;
+    padding: .5em 2em;
+    border-radius: 50%;
+
+}
