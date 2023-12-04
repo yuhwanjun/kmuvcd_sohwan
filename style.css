@@ -48,6 +48,17 @@ h1 {
   filter: drop-shadow(0px 0px 6px #2f93ca);
   z-index: 5;
 }
+h1#logo{
+    width: 15vw;
+    top: 40px;
+    right: 10px;
+    left: auto;
+    transform: none;
+    font-size: 4.3rem;
+    color: #ffeda2;
+    line-height: 1.1em;
+    filter: none;
+}
 
 h2 {
   position: fixed;
@@ -65,7 +76,7 @@ h2 {
 #qrcode {
     position: fixed;
     background-color: #ffeda2;
-    width: 20vw;
+    width: 15vw;
     top: 30px;
     left: 30px;
     padding: 8px;
@@ -100,6 +111,20 @@ label {
   display: block;
   margin-bottom: 0.4em;
 }
+.item p.name {
+    /* position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); */
+    color: #2f93ca;
+    filter: drop-shadow(0px 0px 4px #fff);
+    font-size: 1.4rem;
+    padding-bottom: .2em;
+}
+.item p {
+    padding-bottom: .8em;
+    padding: 0 4em .8em;
+}
 
 input {
   height: 2em;
@@ -126,6 +151,8 @@ input {
   background-position: center;
   width: 248px;
   height: 300px;
+  top: calc(50vh - 124px);
+  left: calc(50vw - 150px);
   /* animation: glitter 2s linear infinite; */
 
   color: #2f93ca;
@@ -156,12 +183,12 @@ input {
 #message {
   font-family: "Happiness-Sans-Regular";
   width: 220px;
-  height: 180px;
+  height: 6em;
   border-radius: 0.6em;
-  background-color: #ffeda2;
+  /* background-color: #ffeda2; */
   color: #2f93ca;
   filter: drop-shadow(0px 0px 12px #fff);
-  margin: 0.6em;
+  margin: 0 0.6em 3rem;
   padding: 1em;
   overflow: hidden;
   white-space: pre-line;

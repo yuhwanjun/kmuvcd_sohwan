@@ -13,6 +13,10 @@
     <div id="qrcode">
         <img src="./assets/adobe-express-qr-code.svg" alt="">
     </div>
+    <h1 id="logo">
+        연간<br>
+        소환
+    </h1>
     <container>
       <div id="dataContainer"></div>
     </container>
@@ -33,58 +37,59 @@
       const dataContainer = document.getElementById("dataContainer");
 
       // 데이터베이스에서 변경 사항 감지 및 div 생성
-      function moveRandom(newDiv) {
-        gsap.to(newDiv, {
-            filter: "drop-shadow(0px 0px 12px #fff)",
-            scale: 0,
-            y: 100,
-            x: 100,
-            opacity: 0,
-            duration: 2,
-            rotate: 100,
-            ease: "power1.out",
-            delay: Math.random() * 3,
-            onComplete: () => {
-                const newX = Math.floor(Math.random() * window.innerWidth - 200);
-                const newY = Math.floor(Math.random() * window.innerHeight - 200);
-                newDiv.style.left = `${newX}px`;
-                newDiv.style.top = `${newY}px`;
+      function animateNewDiv(element) {
+  gsap.to(element, {
+    filter: "drop-shadow(0px 0px 12px #fff)",
+    scale: 0,
+    y: 100,
+    x: 100,
+    opacity: 0,
+    duration: 2,
+    rotate: 100,
+    ease: "power1.out",
+    delay: Math.random() * 3,
+    onComplete: () => {
+      const newX = Math.floor(Math.random() * window.innerWidth - 200);
+      const newY = Math.floor(Math.random() * window.innerHeight - 200);
+      element.style.left = `${newX}px`;
+      element.style.top = `${newY}px`;
 
-            // 위치가 변경된 후에 다시 애니메이션을 시작
-                gsap.to(newDiv, {
-                    filter: "drop-shadow(0px 0px 12px #fff)",
-                    scale: Math.random() + 0.3,
-                    y: 0,
-                    x: 0,
-                    rotate: 0,
-                    opacity: 1,
-                    duration: .01,
-                    ease: "power3.out",
-                    onComplete: () => moveRandom(newDiv),
-                });
-            },
-        });
-        }
+      // Start the animation for the newly added element
+      gsap.to(element, {
+        filter: "drop-shadow(0px 0px 12px #fff)",
+        scale: Math.random() + 0.3,
+        y: 0,
+        x: 0,
+        rotate: 0,
+        opacity: 1,
+        duration: 0.01,
+        ease: "power3.out",
+        onComplete: () => animateNewDiv(element), // Re-trigger animation for the element
+      });
+    },
+  });
+}
 
-      onValue(dataRef, (snapshot) => {
+        onValue(dataRef, (snapshot) => {
         dataContainer.innerHTML = "";
 
         const data = snapshot.val();
         if (data) {
-          Object.keys(data).forEach((key) => {
+            Object.keys(data).forEach((key) => {
             const { name, message } = data[key];
 
             const newDiv = document.createElement("div");
             newDiv.classList.add("item");
-            newDiv.innerHTML = `<p>${name}</p><p>${message}</p>`;
+            newDiv.innerHTML = `<p class="name">${name}</p><p>${message}</p>`;
             dataContainer.appendChild(newDiv);
 
-            moveRandom(newDiv); // 초기 위치 설정 후 애니메이션 시작
-          });
+            // Animate only the newly created element
+            animateNewDiv(newDiv);
+            });
         } else {
-          dataContainer.innerHTML = "<p>No data available</p>";
+            dataContainer.innerHTML = "<p>No data available</p>";
         }
-      });
+        });
     </script>
   </body>
 </html>
