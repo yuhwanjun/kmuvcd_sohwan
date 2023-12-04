@@ -1,17 +1,15 @@
 @font-face {
   font-family: "Happiness-Sans-Title";
-  src: url("./assets/Happiness-Sans-Title.woff2")
-    format("woff2");
+  src: url("./assets/Happiness-Sans-Title.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-    font-family: "Happiness-Sans-Regular";
-    src: url("./assets/Happiness-Sans-Regular.woff2")
-      format("woff2");
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: "Happiness-Sans-Regular";
+  src: url("./assets/Happiness-Sans-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   margin: 0;
@@ -34,10 +32,10 @@ form {
   text-align: center;
   display: flex;
   flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    font-family: "Happiness-Sans-Regular";
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: "Happiness-Sans-Regular";
 }
 
 h1 {
@@ -54,7 +52,7 @@ h1 {
 h2 {
   position: fixed;
   font-size: 1.7rem;
-  top: 3em;
+  top: 2vh;
   left: 50%;
   width: 100%;
   text-align: center;
@@ -62,6 +60,7 @@ h2 {
   color: #ffffff;
   filter: drop-shadow(0px 0px 4px #2f93ca);
   z-index: 5;
+  word-break: keep-all;
 }
 
 main {
@@ -98,14 +97,14 @@ input {
 }
 
 #message {
-    font-family: "Happiness-Sans-Regular";
-  width: 16em;
-  height: 16em;
-  border-radius: .6em;
+  font-family: "Happiness-Sans-Regular";
+  width: 250px;
+  height: 250px;
+  border-radius: 0.6em;
   background-color: #ffeda2;
   color: #2f93ca;
   filter: drop-shadow(0px 0px 12px #fff);
-  margin: .6em;
+  margin: 0.6em;
   padding: 1em;
   overflow: hidden;
   white-space: pre-line;
@@ -118,7 +117,7 @@ input {
 button {
   font-family: "Happiness-Sans-Title";
   text-align: center;
-  color: #2f93ca;
+  color: #fff;
   filter: drop-shadow(0px 0px 8px #2f93ca);
   background-color: #ffeda2;
   border: none;
@@ -129,8 +128,8 @@ button {
   border: 1px solid #fff;
 }
 
-button:hover{
-    background-color: #2f93ca;
-    color: #ffeda2;
-    filter: drop-shadow(0px 0px 4px #fff);
+button:hover {
+  background-color: #2f93ca;
+  color: #ffeda2;
+  filter: drop-shadow(0px 0px 4px #fff);
 }
