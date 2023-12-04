@@ -62,13 +62,30 @@ h2 {
   z-index: 5;
   word-break: keep-all;
 }
+#qrcode {
+    position: fixed;
+    background-color: #ffeda2;
+    width: 20vw;
+    top: 30px;
+    left: 30px;
+    padding: 8px;
+    border-radius: 24px;
+    filter: drop-shadow(0px 0px 12px #fff);
+    z-index: 100;
+}
+container {
+    overflow: hidden;
+}
+#dataContainer {
+    overflow: hidden;
+}
 
 main {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120vw;
-  height: 120vh;
+  width: 100vw;
+  height: 100vh;
   transform: translate(-50%, -50%);
   background-image: url("./SVG/star.svg");
   background-size: cover;
@@ -94,7 +111,48 @@ input {
   color: #2f93ca;
   text-align: center;
 }
+#dataContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.item {
+  position: absolute;
+  display: flex;
+  background-image: url("./SVG/star.svg");
+  background-size: cover;
+  background-position: center;
+  width: 248px;
+  height: 300px;
+  /* animation: glitter 2s linear infinite; */
 
+  color: #2f93ca;
+  filter: drop-shadow(0px 0px 24px #fff);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Happiness-Sans-Regular";
+}
+@keyframes glitter {
+  0% {
+    filter: drop-shadow(0px 0px 24px #fff);
+    opacity: 1;
+    transform: scale(1) translate(0%, 0%);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 2px #fff);
+    opacity: 0.5;
+    transform: scale(0) translate(100%, 100%);
+  }
+}
+
+.star {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
 #message {
   font-family: "Happiness-Sans-Regular";
   width: 220px;

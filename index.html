@@ -1,14 +1,90 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>연간 소환</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-    <script type="module" src="main.js"></script>
-</body>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+  </head>
+  <body>
+    <div id="qrcode">
+        <img src="./assets/adobe-express-qr-code.svg" alt="">
+    </div>
+    <container>
+      <div id="dataContainer"></div>
+    </container>
+
+    <script type="module">
+      import { firebaseApp } from "./firebase-config.js";
+      import {
+        getDatabase,
+        ref,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+      // Firebase Realtime Database 참조 가져오기
+      const database = getDatabase(firebaseApp);
+      const dataRef = ref(database, "item");
+
+      // 데이터가 표시될 div 요소 가져오기
+      const dataContainer = document.getElementById("dataContainer");
+
+      // 데이터베이스에서 변경 사항 감지 및 div 생성
+      function moveRandom(newDiv) {
+        gsap.to(newDiv, {
+            filter: "drop-shadow(0px 0px 12px #fff)",
+            scale: 0,
+            y: 100,
+            x: 100,
+            opacity: 0,
+            duration: 2,
+            rotate: 100,
+            ease: "power1.out",
+            delay: Math.random() * 3,
+            onComplete: () => {
+                const newX = Math.floor(Math.random() * window.innerWidth - 200);
+                const newY = Math.floor(Math.random() * window.innerHeight - 200);
+                newDiv.style.left = `${newX}px`;
+                newDiv.style.top = `${newY}px`;
+
+            // 위치가 변경된 후에 다시 애니메이션을 시작
+                gsap.to(newDiv, {
+                    filter: "drop-shadow(0px 0px 12px #fff)",
+                    scale: Math.random() + 0.3,
+                    y: 0,
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                    duration: .01,
+                    ease: "power3.out",
+                    onComplete: () => moveRandom(newDiv),
+                });
+            },
+        });
+        }
+
+      onValue(dataRef, (snapshot) => {
+        dataContainer.innerHTML = "";
+
+        const data = snapshot.val();
+        if (data) {
+          Object.keys(data).forEach((key) => {
+            const { name, message } = data[key];
+
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("item");
+            newDiv.innerHTML = `<p>${name}</p><p>${message}</p>`;
+            dataContainer.appendChild(newDiv);
+
+            moveRandom(newDiv); // 초기 위치 설정 후 애니메이션 시작
+          });
+        } else {
+          dataContainer.innerHTML = "<p>No data available</p>";
+        }
+      });
+    </script>
+  </body>
 </html>
