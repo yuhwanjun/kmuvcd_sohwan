@@ -49,9 +49,8 @@ h1 {
   z-index: 5;
 }
 h1#logo{
-    width: 15vw;
     top: 40px;
-    right: 10px;
+    right: 40px;
     left: auto;
     transform: none;
     font-size: 4.3rem;
@@ -81,7 +80,7 @@ h2 {
     left: 30px;
     padding: 8px;
     border-radius: 24px;
-    filter: drop-shadow(0px 0px 12px #fff);
+    /* filter: drop-shadow(0px 0px 12px #fff); */
     z-index: 100;
 }
 container {
@@ -90,6 +89,14 @@ container {
 #dataContainer {
     overflow: hidden;
 }
+@keyframes colorChange {
+    0% {
+        filter: drop-shadow(0px 0px 12px #ffeda2);
+    }
+    100% {
+        filter: drop-shadow(0px 0px 12px #fff);
+    }
+  }
 
 main {
   position: absolute;
@@ -102,10 +109,11 @@ main {
   background-size: cover;
   background-position: center;
   color: #2f93ca;
-  filter: drop-shadow(0px 0px 24px #fff);
+  /* filter: drop-shadow(0px 0px 24px #fff); */
   display: flex;
   justify-content: center;
   overflow: hidden;
+  animation: colorChange 5s infinite;
 }
 label {
   display: block;
@@ -120,6 +128,7 @@ label {
     filter: drop-shadow(0px 0px 4px #fff);
     font-size: 1.4rem;
     padding-bottom: .2em;
+    /* text-decoration: underline; */
 }
 .item p {
     padding-bottom: .8em;
@@ -143,6 +152,7 @@ input {
   width: 100vw;
   height: 100vh;
 }
+
 .item {
   position: absolute;
   display: flex;
@@ -154,25 +164,12 @@ input {
   top: calc(50vh - 124px);
   left: calc(50vw - 150px);
   /* animation: glitter 2s linear infinite; */
-
   color: #2f93ca;
   filter: drop-shadow(0px 0px 24px #fff);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Happiness-Sans-Regular";
-}
-@keyframes glitter {
-  0% {
-    filter: drop-shadow(0px 0px 24px #fff);
-    opacity: 1;
-    transform: scale(1) translate(0%, 0%);
-  }
-  100% {
-    filter: drop-shadow(0px 0px 2px #fff);
-    opacity: 0.5;
-    transform: scale(0) translate(100%, 100%);
-  }
 }
 
 .star {
