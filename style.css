@@ -77,6 +77,7 @@ main {
   filter: drop-shadow(0px 0px 24px #fff);
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 label {
   display: block;
@@ -84,7 +85,6 @@ label {
 }
 
 input {
-  width: 10em;
   height: 2em;
   font-size: 1rem;
   border: 0;
@@ -118,18 +118,19 @@ button {
   font-family: "Happiness-Sans-Title";
   text-align: center;
   color: #fff;
-  filter: drop-shadow(0px 0px 8px #2f93ca);
-  background-color: #ffeda2;
+  filter: drop-shadow(0px 0px 4px #fff);
+  background-color: #2f93ca;
   border: none;
   font-size: 1.6rem;
   padding: 0.5em 4em;
   border-radius: 50%;
-  margin-top: 2em;
   border: 1px solid #fff;
+  position: absolute;
+  bottom: 16vh;
 }
 
 button:hover {
   background-color: #2f93ca;
   color: #ffeda2;
-  filter: drop-shadow(0px 0px 4px #fff);
+  filter: drop-shadow(0px 0px 4px #2f93ca);
 }
